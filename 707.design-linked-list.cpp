@@ -1,6 +1,15 @@
+/*
+ * @lc app=leetcode.cn id=707 lang=cpp
+ * @lcpr version=30204
+ *
+ * [707] 设计链表
+ */
+
+// @lcpr-template-start
 #include <bits/stdc++.h>
 using namespace std;
-
+// @lcpr-template-end
+// @lc code=start
 class MyLinkedList {
   private:
 	struct Node {
@@ -68,9 +77,13 @@ class MyLinkedList {
 	}
 };
 
-int main() {
-	MyLinkedList *list = new MyLinkedList;
-	list->addAtHead(1);
-	list->addAtTail(3);
-	list->addAtIndex(3, 2);
-}
+/**
+ * Your MyLinkedList object will be instantiated and called as such:
+ * MyLinkedList* obj = new MyLinkedList();
+ * int param_1 = obj->get(index);
+ * obj->addAtHead(val);
+ * obj->addAtTail(val);
+ * obj->addAtIndex(index,val);
+ * obj->deleteAtIndex(index);
+ */
+// @lc code=end
