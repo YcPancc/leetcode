@@ -14,16 +14,16 @@ class Solution {
   public:
 	vector<vector<int>> threeSum(vector<int> &nums) {
 		sort(nums.begin(), nums.end());
-		int lens = nums.size() - 1;
-		if (nums[0] > 0 && nums[lens] < 0)
+		int lens = nums.size();
+		if (nums[0] > 0 && nums[lens - 1] < 0)
 			return {};
 		vector<vector<int>> result;
-		for (int i = 0; i < lens - 1; i++) {
+		for (int i = 0; i < lens - 2; i++) {
 			if (nums[i] > 0)
 				return result;
 			if (i > 0 && nums[i] == nums[i - 1])
 				continue;
-			int l = i + 1, r = lens;
+			int l = i + 1, r = lens - 1;
 			while (l < r) {
 				if (nums[i] + nums[l] + nums[r] > 0) {
 					r--;
@@ -31,12 +31,12 @@ class Solution {
 					l++;
 				} else {
 					result.push_back(vector<int>{nums[i], nums[l], nums[r]});
-					while (l < r && nums[r] == nums[r - 1])
-						r--;
-					while (l < r && nums[l] == nums[l + 1])
+					while (r > l && nums[l] == nums[l + 1])
 						l++;
-					r--;
+					while (r > l && nums[r] == nums[r - 1])
+						r--;
 					l++;
+					r--;
 				}
 			}
 		}

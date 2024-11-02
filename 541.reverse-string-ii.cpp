@@ -1,6 +1,15 @@
+/*
+ * @lc app=leetcode.cn id=541 lang=cpp
+ * @lcpr version=30204
+ *
+ * [541] 反转字符串 II
+ */
+
+// @lcpr-template-start
 #include <bits/stdc++.h>
 using namespace std;
-
+// @lcpr-template-end
+// @lc code=start
 class Solution {
   public:
 	string reverseStr(string s, int k) {
@@ -14,8 +23,6 @@ class Solution {
 		}
 		return s;
 	}
-
-  private:
 	void reverse(string &s, int l, int r) {
 		char ch;
 		while (l < r) {
@@ -27,7 +34,15 @@ class Solution {
 		}
 	}
 };
-int main() {
-	Solution s;
-	cout << s.reverseStr("abcdefg", 2);
-}
+// @lc code=end
+
+/*
+// @lcpr case=start
+// "abcdefg"\n2\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "abcd"\n2\n
+// @lcpr case=end
+
+ */
