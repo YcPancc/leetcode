@@ -1,6 +1,16 @@
-#include <bits/stdc++.h>
-using namespace std;
+/*
+ * @lc app=leetcode.cn id=93 lang=cpp
+ * @lcpr version=30204
+ *
+ * [93] 复原 IP 地址
+ */
 
+// @lcpr-template-start
+#include <bits/stdc++.h>
+#include <string>
+using namespace std;
+// @lcpr-template-end
+// @lc code=start
 class Solution {
   private:
 	vector<string> result;
@@ -12,7 +22,6 @@ class Solution {
 		}
 		for (int i = start; i < str.size() + level - 4; i++) {
 			string str_num = str.substr(start, i - start + 1);
-			cout << level << " " << str_num << '\n';
 			if (stoi(str_num) > 255) {
 				break;
 			} else {
@@ -29,12 +38,25 @@ class Solution {
 
   public:
 	vector<string> restoreIpAddresses(string s) {
+		if (s.size() < 4 || s.size() > 12)
+			return {};
 		backtracking(s, "", 0, 1);
 		return result;
 	}
 };
+// @lc code=end
 
-int main() {
-	Solution s;
-	s.restoreIpAddresses("25525511135");
-}
+/*
+// @lcpr case=start
+// "25525511135"\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "0000"\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "101023"\n
+// @lcpr case=end
+
+ */
