@@ -2,39 +2,38 @@
 using namespace std;
 
 class Solution {
-  private:
-	vector<string> result;
-	void backtracking(const string &str, const string &nowStr, int start, int level) {
-		if (level == 5) {
-			if (start == str.size())
-				result.push_back(nowStr);
-			return;
-		}
-		for (int i = start; i < str.size() + level - 4; i++) {
-			string str_num = str.substr(start, i - start + 1);
-			cout << level << " " << str_num << '\n';
-			if (stoi(str_num) > 255) {
-				break;
-			} else {
-				if (level == 1) {
-					backtracking(str, nowStr + str_num, i + 1, level + 1);
-				} else {
-					backtracking(str, nowStr + '.' + str_num, i + 1, level + 1);
-				}
-				if (stoi(str_num) == 0)
-					break;
-			}
-		}
-	}
-
   public:
-	vector<string> restoreIpAddresses(string s) {
-		backtracking(s, "", 0, 1);
-		return result;
+	int largestSumAfterKNegations(vector<int> &nums, int k) {
+		sort(nums.begin(), nums.end());
+		int cur = 0;
+		while (nums[cur] < 0 && k > 0 && cur < nums.size()) {
+			nums[cur] = nums[cur] * -1;
+			k--;
+			cur++;
+		}
+		int sum = 0;
+		for (const int &num : nums) {
+			sum += num;
+		}
+		if (k % 2 == 0) {
+			return sum;
+		} else {
+			int min_num;
+			if (cur == 0) {
+				min_num = nums[0];
+			} else if (cur == nums.size()) {
+				min_num = nums[nums.size() - 1];
+			} else {
+				min_num = min(nums[cur - 1], nums[cur]);
+			}
+			return sum - 2 * min_num;
+		}
 	}
 };
 
 int main() {
 	Solution s;
-	s.restoreIpAddresses("25525511135");
+	vector<int> arr = {-4, -2};
+	int nums = s.largestSumAfterKNegations(arr, 5);
+	cout << nums << '\n';
 }
