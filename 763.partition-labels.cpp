@@ -1,6 +1,15 @@
+/*
+ * @lc app=leetcode.cn id=763 lang=cpp
+ * @lcpr version=30204
+ *
+ * [763] 划分字母区间
+ */
+
+// @lcpr-template-start
 #include <bits/stdc++.h>
 using namespace std;
-
+// @lcpr-template-end
+// @lc code=start
 class Solution {
   public:
 	vector<int> partitionLabels(string s) {
@@ -22,12 +31,15 @@ class Solution {
 		return result;
 	}
 };
+// @lc code=end
 
-int main() {
-	Solution s;
-	string str = "ababcbacadefegdehijhklij";
-	vector<int> result = s.partitionLabels(str);
-	for (const int &num : result) {
-		cout << num << ' ';
-	}
-}
+/*
+// @lcpr case=start
+// "ababcbacadefegdehijhklij"\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "eccbbbbdec"\n
+// @lcpr case=end
+
+ */
